@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>РИАЛ КОВРЫ</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Honk&family=Inter:ital,opsz@0,14..32;1,14..32&family=Pacifico&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
+
+    * {
+      margin: 0;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fdfdfd;
+
+    }
+
+    .Header {
+      display: flex;
+      justify-content: center;
+      z-index: 100;
+      position: sticky;
+      top: 0;
+    }
+
+    header {
+      background-color: #e99673;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      width: 50%;
+      border-radius: 10px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 17px;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cards {
+      display: flex;
+      width: 50%;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-content: space-evenly;
+    }
+
+    .cart {
+      font-size: 22px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .cart:hover {
+      transform: scale(1.1);
+    }
+
+    .card {
+      background: linear-gradient(145deg, #f8e4db, #fff6f3);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin: 20px;
+      display: inline-block;
+      vertical-align: top;
+      height: 264px;
+      width: 209px;
+    }
+    .cart>a{
+      text-decoration: none;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);  
+    }
+
+    .card>.image {
+      width: 132px;
+      height: 152px;
+      background: #ddd;
+      border-radius: 8px;
+      margin: 0 auto 15px;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      color: #555;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #f28c64;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: 0;
+      font-weight: bold;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn:hover {
+      background: rgb(220, 99, 55);
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+
+    .modal {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      width: 1229px;
+      height: 739px;
+    }
+
+    .obolochka {
+      display: flex;
+      align-items: flex-start;
+      width: 100%;
+      height: 100%;
+    }
+
+    .grayBack {
+      background-color: #ebebeb;
+      border-radius: 20px;
+      height: 100%;
+      width: 44.4%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .grayBack>img {
+      height: 554px;
+      width: 367px;
+    }
+
+    .texts {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 50%;
+      height: 100%;
+    }
+
+    .texts>h1 {
+      color: #4a4a4a;
+      font-family: "Inter", sans-serif;
+      font-size: 40px;
+      display: inline-flex;
+    }
+
+    .texts>p{
+      background-color: #e99673;
+      color: #fff;
+      padding: 10px 190px;
+      border-radius: 10px;
+    }
+
+
+    .downElements>.despretion{
+      height: 280px;
+      width: 474px;
+      background-color: #EDEDED;
+      text-align: left;
+      padding: 15px 20px;
+      font-family: "Inter", sans-serif;
+      font-size: 18px;
+      margin-bottom: 50px;
+      border-radius: 10px;
+    }
+    .downElements>.Cost{
+      text-align: left;
+      margin-top: 10px;
+      margin-left: 10px;
+      font-size: 25px;
+      color: #4a4a4a;
+      font-weight: 600;
+    }
+    .downElements>.Buy{
+      background-color: #E9967A;
+      color: #fff;
+      border-radius: 10px;
+      border: none;
+      text-align: center;
+      width: 484px;
+      height: 59px;
+      font-size: 27px;
+      font-family: "Inter", sans-serif;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.2s;
+      margin-top: 10px;
+    }
+    .downElements>.Buy:hover{
+      background-color: #ea805d;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    .leftRightBtn{
+      border-radius: 45px;
+      border: none;
+      color: white;
+      background-color: #E9967A;
+      height: 50px;
+      width: 50px;
+      font-size: 25px;
+      padding-bottom: 7px;
+      font-weight: 900;
+    }
+
+    .closeModal{
+        height: 50px;
+        width: 50px;
+        position: absolute;
+        border-radius: 15px;
+        border: none;
+        background-color: #E9967A;
+        font-size: 30px;
+        font-weight: 800;
+        color: white;
+    }
+
+    .closeModal:hover{
+      background-color: #ea805d;
+    }
+    #titleP{
+      display: flex;
+    }
+    #titleP::before{
+      gap: 100px;
+    }
+
+    /*медиа запросы*/
+    @media (max-width: 1024px) {
+  header {
+    width: 70%;
+  }
+
+  .cards {
+    width: 80%;
+  }
+
+  .modal {
+    width: 90%;
+    height: auto;
+  }
+
+  .grayBack img {
+    height: 380px;
+    width: 260px;
+  }
+
+  .texts > p {
+    padding: 10px 80px;
+  }
+
+  /* убираем фиксированную высоту */
+.downElements > .despretion {
+  height: auto;        /* ← было 280px */
+  width: 100%;
+  background-color: #EDEDED;
+  text-align: left;
+  padding: 15px 20px;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;  
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  gap: 20px;                     
+  padding: 20px 0;
+}
+
+  .downElements > .Buy {
+    width: 360px;
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    width: 85%;
+    padding: 14px 20px;
+  }
+
+  header h1 {
+    font-size: 18px;
+  }
+
+  #titleP{
+    gap: 50px;
+  }
+
+  .cards {
+    width: 95%;
+    justify-content: center;
+  }
+
+  .card {
+    width: 110px;
+    height: auto;
+    margin: 10px;
+    padding: 14px;
+  }
+
+  .card > .image {
+    width: 90px;
+    height: 110px;
+  }
+
+  .title {
+    font-size: 15px;
+  }
+
+  /* Модалка — вертикальная на мобилке */
+  .modal {
+    width: 95%;
+    height: 80vh;
+    overflow-y: auto;
+    border-radius: 14px;
+  }
+
+  .obolochka {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .grayBack {
+    width: 100%;
+    border-radius: 14px 14px 0 0;
+    padding: 20px 0;
+    height: 70%;
+  }
+
+  .grayBack > img {
+    height: 260px;
+    width: 180px;
+  }
+
+  .texts {
+    width: 90%;
+    padding: 20px 0;
+    height: auto;
+    gap: 10px;
+  }
+
+  .texts > h1 {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .texts > p {
+    padding: 8px 30px;
+    font-size: 14px;
+    width: 75%;
+  }
+
+  .downElements{
+    width: 85%;
+  }
+
+  .downElements > .despretion {
+    width: 100%;
+    font-size: 15px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .downElements > .Cost {
+    font-size: 20px;
+  }
+
+  .downElements > .Buy {
+    width: 100%;
+    font-size: 20px;
+    height: 50px;
+  }
+
+  .closeModal {
+    top: 8px;
+    right: 8px;
+  }
+} 
+@media (max-width: 880px){
+  .downElements > .despretion{
+    width: 80%;
+  }
+}
+  </style>
+</head>
+
+<body>
+  <div class="Header">
+    <header>
+      <div>
+        <h1>РИАЛ КОВРЫ</h1>
+        <p id="titleP">Магазин</p>
+      </div>
+      <div class="cart"><a href="Cart.html">🛒</a></div>
+    </header>
+  </div>
+
+  <main>
+
+
+
+
+
+    <!-- товары -->
+
+
+
+    <div id="cardsContainer">
+      
+    </div>
+  </main>
+
+
+
+
+
+  
+  <!--Окна товаров-->
+
+
+
+
+
+<div id="productModal" class="overlay">
+  <div class="modal">
+    <div class="obolochka">
+
+      <div class="grayBack">
+        <button onclick="prevImage()" class="leftRightBtn" style="margin-right:20px;">←</button>
+
+        <img id="galleryImage">
+
+        <button onclick="nextImage()" class="leftRightBtn" style="margin-left:20px;">→</button>
+      </div>
+
+      <div class="texts">
+
+        <div style="display:flex;width:100%;justify-content:end;">
+          <button onclick="closeModal()" class="closeModal">
+            X
+          </button>
+        </div>
+
+        <h1 id="productTitle"></h1>
+
+        <p>Характеристики</p>
+
+        <div class="downElements">
+
+          <p class="despretion" id="productDescription"></p>
+
+          <p class="Cost" id="productPrice"></p>
+
+          <button class="Buy" id="buyButton">
+            Добавить в корзину
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+  <script src="shop.js"></script>
+</body>
+
+</html>

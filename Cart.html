@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Honk&family=Inter:ital,opsz@0,14..32;1,14..32&family=Pacifico&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap");
+
+    * {
+      margin: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fdfdfd;
+    }
+
+    /* HEADER STYLES*/
+
+    .Header {
+      display: flex;
+      justify-content: center;
+      z-index: 100;
+      position: sticky;
+      top: 0;
+    }
+
+    header {
+      background-color: #e99673;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      width: 50%;
+      border-radius: 10px;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 17px;
+    }
+
+    header a {
+      margin: 0;
+      font-size: 17px;
+      color: white;
+      text-decoration: none;
+    }
+
+    #title {
+      font-size: 24px;
+      display: block;
+      font-weight: 600;
+    }
+
+    /*CARDS STYLES*/
+
+    .cards {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .card {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      background: linear-gradient(145deg, #f8e4db, #fff6f3);
+      padding: 18px;
+      border-radius: 12px;
+      width: 800px;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      box-sizing: border-box;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-img {
+      width: 110px;
+      height: 150px;
+      border-radius: 4px;
+    }
+
+    .card-content {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .card-content h1 {
+      margin: 0 0 10px 0;
+      font-size: 22px;
+      line-height: 1.05;
+    }
+
+    .p-bg {
+      background: #e9e9e9;
+      padding: 10px 12px;
+      border-radius: 4px;
+      margin-bottom: 14px;
+    }
+
+    .Desp-names {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .p-bg p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.35;
+      color: #111;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      background: #ffb89b;
+      border: none;
+      padding: 6px 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      user-select: none;
+      height: 30px;
+      width: 30px;
+      color: #e9e9e9;
+      font-weight: 500;
+    }
+
+    .btn:hover {
+      background: #ffa37e;
+    }
+
+    .count {
+      min-width: 20px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: 700;
+      margin-left: 12px;
+      align-self: flex-end;
+    }
+
+    /* ===== КНОПКА ОФОРМЛЕНИЯ ===== */
+
+    .order-btn {
+      background-color: #e99673;
+      color: #fff;
+      font-size: 22px;
+      padding: 14px 40px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .order-btn:hover {
+      background-color: #ea805d;
+      transform: scale(1.05);
+    }
+
+    /* ===== МОДАЛКА ===== */
+
+    .order-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 1000;
+    }
+
+    .order-modal {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      width: 420px;
+      padding: 30px 35px 35px;
+      border-radius: 18px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      font-family: "Inter", sans-serif;
+    }
+
+    .order-modal h2 {
+      margin-bottom: 25px;
+      text-align: center;
+      color: #4a4a4a;
+    }
+
+    /* ===== ФОРМА ===== */
+
+    .order-modal form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .order-modal input {
+      padding: 14px 16px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      outline: none;
+    }
+
+    .order-modal input:focus {
+      border-color: #e99673;
+    }
+
+    /* ===== КНОПКА ОТПРАВКИ ===== */
+
+    .submit-btn {
+      margin-top: 10px;
+      background-color: #e99673;
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .submit-btn:hover {
+      background-color: #ea805d;
+      transform: scale(1.03);
+    }
+
+    /* ===== КРЕСТИК ===== */
+
+    .order-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      border: none;
+      background: #e99673;
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .order-close:hover {
+      background: #ea805d;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="Header">
+    <header>
+      <div>
+        <a id="title" href="shop.html">РИАЛ КОВРЫ</a>
+        <a href="shop.html">          Магазин</a>
+      </div>
+      <div class="cart">Корзина</div>
+    </header>
+  </div>
+
+  <!--CARDS -->
+
+  <main>
+    <div class="cards"></div>
+    <div style="display: flex; justify-content: center; margin: 40px 0">
+      <button class="order-btn" onclick="openOrderModal()">
+        Оформить заказ
+      </button>
+    </div>
+  </main>
+  <script src="Cart.js"></script>
+
+  <div class="order-overlay" id="orderModal">
+    <div class="order-modal">
+      <button class="order-close" onclick="closeOrderModal()">✕</button>
+
+      <h2>Оформление заказа</h2>
+
+      <form id="orderForm" action="https://formspree.io/f/xpqwwywy" method="POST">
+
+        <input type="text" name="name" placeholder="Имя" required />
+        <input type="tel" name="phone" placeholder="Телефон" required />
+        <input type="email" name="email" placeholder="Email" required />
+
+        <!-- сюда JS положит заказ -->
+        <textarea name="order" id="order" hidden></textarea>
+
+        <button type="submit" class="submit-btn">Отправить заказ</button>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

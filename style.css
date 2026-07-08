@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Honk&family=Pacifico&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
+
+
+*{
+    margin: 0;
+}
+body{
+    background-image: url(Background.png);
+    background-color: #E9967A;
+    background-size: cover;
+    background-attachment: fixed;
+}
+header{
+    padding: 10px 5%;
+    background-color: #FFA07A;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+}
+header>*{
+    display: inline-block;
+    width: 450px;
+}
+
+.nav-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#start{
+    display: inline-block;
+    padding: 5px;
+    border: 6px #E9967A dashed;
+}
+
+.start{
+    color: darkred;
+    font-family: "M PLUS 1p", sans-serif;
+}
+
+.pustota{
+    width: 35vw;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    margin: 0px 10px;
+}
+
+#name{
+    color: darkred;
+    font-family: "M PLUS 1p", sans-serif;
+    font-weight: 900;
+    font-size: 25px;
+}
+
+.banner{
+    padding: 20%  5%;
+    font-size: 30px;
+}
+.post{
+    background-color: #E9967A;
+    padding: 30px 5%;
+    text-align: center;
+    border: 6px darkred dashed;
+    font-family: "Roboto Slab", serif;
+}
+.post>*{
+    display: inline-block;
+    width: 450px;
+    font-size: 30px;
+    vertical-align: middle;
+}
+.razryv{
+    height: 700px;
+}
+
+#final>div{
+    padding: 10px;
+    background-color: #fff;
+    text-align: center;
+    font-size: 30px;
+    border: 4px black solid;
+}
+
+#shops{
+    margin-top: 500px;
+}
+
+
+#Map{
+    color: darkred;
+    font-family: "M PLUS 1p", sans-serif;
+    text-align: center;
+    margin: 0 auto 50px auto;
+    border: 3px #E9967A dashed;
+    background-color: #FFA07A;
+    width: 300px;
+}
+.MapsObolochka{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.MainMap{
+    display: inline-block;
+    margin: 0 50px 10px 50px;
+    padding: 20px;
+    border: 4px darkred dotted;
+    background-color: #E9967A;
+}
+
+#MainMap>p{
+    color: darkred;
+    font-size: 20px;
+    font-weight: 750;
+    font-family: "M PLUS 1p", sans-serif;
+}
+
+#whats{
+    width: 20px;
+    height: 20px;
+    
+}
+
+.whats>p{
+   margin: 0;
+}
+
+.whats {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px;
+    border: 2px darkred dashed;
+    background-color: salmon;
+}
+
+footer{
+    background-color: black;
+    padding: 10px 0;
+    text-align: center;
+    color: #fff;
+}
+
+
+

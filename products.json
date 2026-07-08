@@ -1,0 +1,33 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Ковёр 2м на 3м",
+      "price": 5000,
+      "description": [
+        { "label": "Производство", "value": "Турция" },
+        { "label": "Материал", "value": "Акрил" },
+        { "label": "xxx", "value": "???" },
+        { "label": "Узлов на м²", "value": "2млн" }
+      ],
+      "images": [
+        "img/carpet1/carpet.png",
+        "img/carpet1/carpet2.png",
+        "img/carpet1/carpet3.png"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Ковёр Иранский",
+      "price": 7500,
+      "description": [
+        { "label": "Производство", "value": "Иран" },
+        { "label": "Материал", "value": "???" },
+        { "label": "Узлов на м²", "value": "2млн" }
+      ],
+      "images": [
+        "img/carpet1/carpet.png"
+      ]
+    }
+  ]
+}
